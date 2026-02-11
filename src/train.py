@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle
 from sklearn.model_selction import train_test_split
 sklearn.feature_extraction.text import TfidfVectorizer
 sklearn.linear_model import LogisticRegression
@@ -26,3 +27,13 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
 print("Model Accuracy:", accuracy)
+
+# Save model
+with open("../model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+# Save vectorizer
+with open("../vectorizer.pkl", "wb") as f:
+    pickle.dump(vectorizer, f)
+
+print("Model and vectorizer saved successfully!")
